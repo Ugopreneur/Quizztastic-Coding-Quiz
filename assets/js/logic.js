@@ -1,20 +1,29 @@
-// WHEN I click the start button
 // attach an event listener to the start button listening for a click to start the game
 var startButton = document.querySelector(".start");
 
+// WHEN I click the start button, run a function to start the game
 startButton.addEventListener("click", function() {
+
+    // remove default page content
+    // start a timer
+    // set index of question to start game with
+    // reset all scores to zero
     
-    // The click runs a function to start a timer and presente a question to user
-for (var i = 0; i < questionsAndAnswers.length; i++) {
-    console.log(questionsAndAnswers[i].question);
+    // Run a function to present next question to user
+    
+
+    
+    // display question index[i]
+    // WHEN I answer a question
+    // display right or wrong at bottom
+    // sound plays if right or wrong
+    // remove current question
+    // THEN I am presented with another question
 }
 })
 
 
-// WHEN I answer a question
-// display right or wrong
-//sound plays if right or wrong
-// THEN I am presented with another question
+
 
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
@@ -31,3 +40,10 @@ for (var i = 0; i < questionsAndAnswers.length; i++) {
 //   });
 
 //Look at the buttons in the css file to get a good idea of how to add things to your page
+
+
+// ALL FUNCTIONS DECLARED BELOW:
+
+//a function to present next question to user
+for (var i = 0; i < questionsAndAnswers.length; i++) {
+    console.log(questionsAndAnswers[i].question);
