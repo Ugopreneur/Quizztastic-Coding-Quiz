@@ -5,6 +5,8 @@ var startButton = document.querySelector(".start");
 startButton.addEventListener("click", function() {
 
     // remove default page content
+    var startScreen = document.querySelector("#start-screen");
+    startScreen.classList.add("hide");
     // start a timer
     // set index of question to start game with
     // reset all scores to zero
@@ -19,7 +21,6 @@ startButton.addEventListener("click", function() {
     // sound plays if right or wrong
     // remove current question
     // THEN I am presented with another question
-}
 })
 
 
@@ -45,5 +46,17 @@ startButton.addEventListener("click", function() {
 // ALL FUNCTIONS DECLARED BELOW:
 
 //a function to present next question to user
-for (var i = 0; i < questionsAndAnswers.length; i++) {
-    console.log(questionsAndAnswers[i].question);
+
+// populate view with next question
+// pupolate the answer buttons with the answers associated with that question
+// quizQuestions[currentQuestionIndex].answers.forEach((answer) => {
+//     const button = document.createElement("button");
+//     button.innerText = answer.text;
+//     button.setAttribute("class", "btn btn-outline-info");
+//     if (answer.correct) {
+//       button.dataset.correct = answer.correct;
+//     }
+//     // attaching an event listener for when the user clicks an answer
+//     button.addEventListener("click", selectAnswer);
+//     answerButtonsDiv.appendChild(button);
+//   });
