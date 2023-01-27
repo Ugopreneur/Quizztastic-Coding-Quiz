@@ -1,29 +1,38 @@
+// DECLARING VARIABLES FOR USE IN THE GLOBAL SCOPE
+
 // attach an event listener to the start button listening for a click to start the game
 var startButton = document.querySelector(".start");
+// 
+var questionIndex = 0
+
+
+
+
+//MAIN GAME LOGIC STARTS HERE ...
 
 // WHEN I click the start button, run a function to start the game
 startButton.addEventListener("click", function() {
 
-    // remove default page content
+    // remove default 'start screen' content from view
     var startScreen = document.querySelector("#start-screen");
     startScreen.classList.add("hide");
+    // allow questions to show in view
+    var questionScreen = document.querySelector("#questions");
+    questionScreen.classList.remove("hide");
     // start a timer
     // set index of question to start game with
     // reset all scores to zero
     
     // Run a function to present next question to user
+    displayNextQuestion();
     
+})
 
-    
-    // display question index[i]
     // WHEN I answer a question
     // display right or wrong at bottom
     // sound plays if right or wrong
     // remove current question
     // THEN I am presented with another question
-})
-
-
 
 
 // WHEN I answer a question incorrectly
@@ -43,20 +52,25 @@ startButton.addEventListener("click", function() {
 //Look at the buttons in the css file to get a good idea of how to add things to your page
 
 
+
+
 // ALL FUNCTIONS DECLARED BELOW:
 
-//a function to present next question to user
+//a function to display the next question to user
+function displayNextQuestion() {
 
-// populate view with next question
-// pupolate the answer buttons with the answers associated with that question
-// quizQuestions[currentQuestionIndex].answers.forEach((answer) => {
-//     const button = document.createElement("button");
-//     button.innerText = answer.text;
-//     button.setAttribute("class", "btn btn-outline-info");
-//     if (answer.correct) {
-//       button.dataset.correct = answer.correct;
-//     }
-//     // attaching an event listener for when the user clicks an answer
-//     button.addEventListener("click", selectAnswer);
-//     answerButtonsDiv.appendChild(button);
-//   });
+    // populate view with next question
+    var questionOnDisplay = document.querySelector("#question-title");
+    questionOnDisplay.textContent = questionsAndAnswers[questionIndex].questionText;
+    // populate the answer buttons with the answers associated with that question
+    // quizQuestions[currentQuestionIndex].answers.forEach((answer) => {
+    //     const button = document.createElement("button");
+    //     button.innerText = answer.text;
+    //     button.setAttribute("class", "btn btn-outline-info");
+    //     if (answer.correct) {
+    //       button.dataset.correct = answer.correct;
+    //     }
+    //     // attaching an event listener for when the user clicks an answer
+    //     button.addEventListener("click", selectAnswer);
+    //     answerButtonsDiv.appendChild(button);
+};
