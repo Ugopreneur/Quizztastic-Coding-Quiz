@@ -1,7 +1,7 @@
 // Ceate questions as a javascript Object
 var questionsAndAnswers = [
     {
-        question: "For loops are commonly used for?",
+        question: "'For loops' are commonly used for?",
         options: [
             "Iterating under arrays",
             "Iterating over arrays",
