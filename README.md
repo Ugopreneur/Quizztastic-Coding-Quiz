@@ -1,6 +1,7 @@
-# <Your-Project-Title>
+# Quizztastic-Coding-Quiz
 
-## Description
+## A multiple-choice coding quiz that can keep track of high scores and quiz-takers' initials
+
 
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
