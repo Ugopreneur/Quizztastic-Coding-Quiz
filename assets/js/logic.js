@@ -1,8 +1,8 @@
 // DECLARING VARIABLES FOR USE IN THE GLOBAL SCOPE
 
-// attach an event listener to the start button listening for a click to start the game
+// attaching an event listener to the start button listening for a click to start the game
 var startButton = document.querySelector(".start");
-// 
+// establishing the starting index in the questionsAndAnswers array
 var questionIndex = 0
 
 
@@ -21,12 +21,13 @@ startButton.addEventListener("click", function() {
     questionScreen.classList.remove("hide");
     // start a timer
     // set index of question to start game with
+    questionIndex = 0
     // reset all scores to zero
     
     // Run a function to present next question to user
     displayNextQuestion();
     
-})
+});
 
     // WHEN I answer a question
     // display right or wrong at bottom
@@ -63,14 +64,19 @@ function displayNextQuestion() {
     var questionOnDisplay = document.querySelector("#question-title");
     questionOnDisplay.textContent = questionsAndAnswers[questionIndex].questionText;
     // populate the answer buttons with the answers associated with that question
-    // quizQuestions[currentQuestionIndex].answers.forEach((answer) => {
-    //     const button = document.createElement("button");
-    //     button.innerText = answer.text;
-    //     button.setAttribute("class", "btn btn-outline-info");
-    //     if (answer.correct) {
-    //       button.dataset.correct = answer.correct;
-    //     }
-    //     // attaching an event listener for when the user clicks an answer
-    //     button.addEventListener("click", selectAnswer);
-    //     answerButtonsDiv.appendChild(button);
-};
+    questionsAndAnswers[questionIndex].possibleAnswers.forEach((i) => {
+        
+        console.log(i); // logs in console just to check that my forEach loop works as intended
+        var answerButton = document.createElement("button");
+        // put a number before the text on each button
+        answerButton.textContent = questionsAndAnswers[questionIndex].possibleAnswers.indexOf(i)+1 + ". " + i.answerText;
+        possibleAnswersDiv = document.getElementById("choices");
+        possibleAnswersDiv.appendChild(answerButton);
+        // add a data attribute of correct or incorrect (true or false) to each button
+        answerButton.dataset.correct = i.correct;
+        console.log(answerButton.dataset.correct);
+        // attaching an event listener for when the user clicks an answer
+        // answerButton.addEventListener("click", )
+    
+    });
+}
