@@ -74,7 +74,6 @@ function displayNextQuestion() {
         possibleAnswersDiv.appendChild(answerButton);
         // add a data attribute of correct or incorrect (true or false) to each button
         answerButton.dataset.correct = i.correct;
-        console.log(answerButton.dataset.correct);
         // attaching an event listener for when the user clicks an answer
         // answerButton.addEventListener("click", )
     
