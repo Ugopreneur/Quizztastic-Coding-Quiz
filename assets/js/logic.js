@@ -12,7 +12,7 @@ var possibleAnswersDiv = document.getElementById("choices");
 
 
 
-//MAIN GAME LOGIC STARTS HERE ...
+//MAIN GAME LOGIC STARTS HERE
 // ===========================================================================
 
 // WHEN I click the start button, run a function to start the game
@@ -54,7 +54,6 @@ function startTimer() {
         // Send user to game over screen 
 
       }
-  
     }, 1000);
   }
 
@@ -118,7 +117,6 @@ function correctnessChecker(event) {
     setTimeout(() => {
         feedbackDiv.classList.add("hide");
         }, 2000);
-
 }
 
 
