@@ -1,10 +1,11 @@
-// DECLARING VARIABLES FOR USE IN THE GLOBAL SCOPE
+// DECLARING VARIABLES & DOM ELEMENTS FOR USE IN THE GLOBAL SCOPE
 
-// attaching an event listener to the start button listening for a click to start the game
-var startButton = document.querySelector(".start");
 // establishing the starting index in the questionsAndAnswers array
-var questionIndex = 0
-
+var questionIndex = 0;
+// declaring the total time allowed for the game
+var timeLeft = 75;
+var timeEl = document.querySelector("#time");
+var startButton = document.querySelector(".start");
 
 
 
@@ -19,10 +20,11 @@ startButton.addEventListener("click", function() {
     // allow questions to show in view
     var questionScreen = document.querySelector("#questions");
     questionScreen.classList.remove("hide");
-    // start a timer
+    // Run a function to start the game timer
+    startTimer();
     // set index of question to start game with
-    questionIndex = 0
-    // reset all scores to zero
+    questionIndex = 0;
+    // reset all scores to zero??
     
     // Run a function to present next question to user
     displayNextQuestion();
@@ -34,7 +36,25 @@ startButton.addEventListener("click", function() {
 
 // ALL FUNCTIONS DECLARED BELOW:
 
-//a function to display the next question to user
+// a function to start the game timer
+function startTimer() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+      timeLeft--;
+      timeEl.textContent = timeLeft;
+  
+      if(timeLeft === 0) {
+        // Stops timer at zero
+        clearInterval(timerInterval);
+        // Send user to game over screen
+        
+      }
+  
+    }, 1000);
+  }
+
+
+// a function to display the next question to user
 function displayNextQuestion() {
 
     // populate view with next question
