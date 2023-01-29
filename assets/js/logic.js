@@ -77,9 +77,15 @@ function displayNextQuestion() {
     });
 }
 
-function correctnessChecker() {
+function correctnessChecker(event) {
 
-    // check if answer is right or wrong 
+    var answerChosen = event.target;
+    // if statements to check whether answer is correct or wrong
+    if (answerChosen.dataset.correct === "true") {
+        console.log("Answer is correct! Your code works");
+    } else {
+        console.log("Something's not working right");
+    }
     // if answer is correct, play correct sound, display "correct!"" at bottom (inside feedback div)
     // if answer is wrong, play wrong sound, display display "wrong!"" at bottom (inside feedback div), and then deduct 15 seconds from time
     // ensure timer cant go below zero

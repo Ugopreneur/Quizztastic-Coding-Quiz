@@ -10,7 +10,7 @@ var questionsAndAnswers = [
         ]
     },
     {
-        questionText: "Which of these is not a typoe of Javascript message box",
+        questionText: "Which of these is not a type of Javascript message box",
         possibleAnswers: [
             {answerText: "enter option 1", correct: false},
             {answerText: "enter option 2", correct: false},
