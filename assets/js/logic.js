@@ -128,7 +128,7 @@ function correctnessChecker(event) {
     // remove the "Correct!" or "Wrong!" notification at the bottom of the page after 2 seconds
     setTimeout(() => {
         feedbackDiv.classList.add("hide");
-        }, 2000);
+        }, 3000);
 };
 
 
@@ -147,7 +147,7 @@ function gameOver() {
     // remove the "Correct!" or "Wrong!" notification at the bottom of the page after 2 seconds
     setTimeout(() => {
         feedbackDiv.classList.add("hide");
-        }, 2000);
+        }, 3000);
     //activate submit button
     submitButton.addEventListener("click", submitInitials);
 
@@ -172,7 +172,7 @@ function submitInitials(event) {
         feedbackDiv.classList.remove("hide");
     } else {
         feedbackDiv.style.color = "green";
-        feedbackDiv.textContent = "Score recorded succesfully!";
+        feedbackDiv.innerHTML = "Score recorded succesfully!<p>Click 'View Highscores' to see how you rank";
         feedbackDiv.classList.remove("hide");
 
         var scoreBoardArray;
@@ -197,7 +197,7 @@ function submitInitials(event) {
     
     setTimeout(() => {
         feedbackDiv.classList.add("hide");
-    }, 2000);
+    }, 5000);
     
 };
 
