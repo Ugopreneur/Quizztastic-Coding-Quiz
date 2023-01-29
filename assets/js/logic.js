@@ -32,8 +32,6 @@ startButton.addEventListener("click", function() {
     startTimer();
     // set index of question to start game with
     questionIndex = 0;
-    // reset all scores to zero??
-    
     // Run a function to present next question to user
     displayNextQuestion();
     
@@ -75,7 +73,6 @@ function displayNextQuestion() {
         // populate the answer buttons with the answers associated with that question
         questionsAndAnswers[questionIndex].possibleAnswers.forEach((i) => {
             
-            console.log(i); // logs in console just to check that my forEach loop works as intended
             var answerButton = document.createElement("button");
             // put a number before the text on each button
             answerButton.textContent = questionsAndAnswers[questionIndex].possibleAnswers.indexOf(i)+1 + ". " + i.answerText;
