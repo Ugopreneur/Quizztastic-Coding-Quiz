@@ -4,7 +4,7 @@
 // establishing the starting index in the questionsAndAnswers array
 var questionIndex = 0;
 // declaring the total time allowed for the game
-var timeLeft = 76;
+var timeLeft = 75;
 // declaring game timer variable so it can be stopped by multiple funtions
 var timerInterval;
 var timeEl = document.querySelector("#time");
@@ -13,6 +13,7 @@ var feedbackDiv = document.querySelector("#feedback");
 var possibleAnswersDiv = document.getElementById("choices");
 var questionScreen = document.querySelector("#questions");
 var gameOverScreen = document.querySelector("#end-screen");
+var submitButton = document.querySelector("#submit");
 
 
 
@@ -131,7 +132,7 @@ function correctnessChecker(event) {
 };
 
 
-// a function to end the game
+// a function to end the game and show user their final score
 function gameOver() {
 
     // stop the timer
@@ -143,42 +144,58 @@ function gameOver() {
     // show user their final score
     var finalscore = document.querySelector("#final-score");
     finalscore.textContent = timeLeft;
-
-    // THEN I can save my initials and score (write to local storage from this logic file)
-    var submitButton = document.querySelector("#submit");
-    submitButton.addEventListener("click", function(event) {
-        event.preventDefault();
-
-        // create scoreboard record as an object from submission
-        var playerInitials = document.querySelector("#initials")
-        var leaderBoardEntry = {
-            playerInitials: playerInitials.value.trim(),
-            playerScore: timeLeft,
-        };
-        
-        feedbackDiv.classList.remove("hide");
-        if (leaderBoardEntry.playerInitials === "") {
-            feedbackDiv.style.color = "red";
-            feedbackDiv.textContent = "Initials cannot be left blank!";
-        } else {
-            feedbackDiv.style.color = "green";
-            feedbackDiv.textContent = "Score recorded succesfully!";
-        };
-        setTimeout(() => {
-            feedbackDiv.classList.add("hide");
-            }, 2000);
-
-    
-    });
+    //activate submit button
+    submitButton.addEventListener("click", submitInitials);
+    // remove the "Correct!" or "Wrong!" notification at the bottom of the page after 2 seconds
+    setTimeout(() => {
+        feedbackDiv.classList.add("hide");
+        }, 2000);
 
 };
 
 
+// a function to allow users submit their initials and log to scoreboard
+function submitInitials(event) {
+//     event.preventDefault();
+//     var scoreBoardArray;
 
+//     // declaring a variable to hold a string of all old game scores
+//     var oldScores = localStorage.getItem("scoreBoardString");
 
+//     // if there were no old scores, create a new array, but if there are, capture them into an array
+//     if (oldScores === null) {
+//         scoreBoardArray = [];
+//     } else {
+//         scoreBoardArray = JSON.parse(oldScores);
+//     };
 
-// Clicking on image opens a new window containing the image
-// adapt this for viewing high scores page
-// carousel.addEventListener("click", function() {
-//     window.location.href = images[index]; // this shoudl  be a url
-//   });
+//     // validate the initials submitted by the user
+//     feedbackDiv.classList.remove("hide");
+//     if (scoreBoardEntry.playerInitials === "") {
+//         feedbackDiv.style.color = "red";
+//         feedbackDiv.textContent = "Initials cannot be left blank!";
+//     } else {
+//         feedbackDiv.style.color = "green";
+//         feedbackDiv.textContent = "Score recorded succesfully!";
+
+//         // create this game's scoreboard record as an object from player's submission
+//         var playerInitials = document.querySelector("#initials")
+//         var scoreBoardEntry = {
+//             playerInitials: playerInitials.value.trim(),
+//             playerScore: timeLeft,
+//         };
+
+//         // add this game's object to the existing array of objects from previous games
+//         scoreBoardArray.push(scoreBoardEntry);
+
+//         // write the full record to local storage
+//         localStorage.setItem("scoreBoardString", JSON.stringify(scoreBoardArray));
+
+//     };
+    
+//     setTimeout(() => {
+//         feedbackDiv.classList.add("hide");
+//     }, 2000);
+    
+// };
+
