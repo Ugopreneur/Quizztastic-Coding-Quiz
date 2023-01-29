@@ -144,58 +144,59 @@ function gameOver() {
     // show user their final score
     var finalscore = document.querySelector("#final-score");
     finalscore.textContent = timeLeft;
-    //activate submit button
-    submitButton.addEventListener("click", submitInitials);
     // remove the "Correct!" or "Wrong!" notification at the bottom of the page after 2 seconds
     setTimeout(() => {
         feedbackDiv.classList.add("hide");
         }, 2000);
+    //activate submit button
+    submitButton.addEventListener("click", submitInitials);
 
 };
 
 
 // a function to allow users submit their initials and log to scoreboard
 function submitInitials(event) {
-//     event.preventDefault();
-//     var scoreBoardArray;
+    event.preventDefault();
+    var scoreBoardArray;
 
-//     // declaring a variable to hold a string of all old game scores
-//     var oldScores = localStorage.getItem("scoreBoardString");
+    // declaring a variable to hold a string of all old game scores
+    var oldScores = localStorage.getItem("scoreBoardString");
 
-//     // if there were no old scores, create a new array, but if there are, capture them into an array
-//     if (oldScores === null) {
-//         scoreBoardArray = [];
-//     } else {
-//         scoreBoardArray = JSON.parse(oldScores);
-//     };
+    // if there were no old scores, create a new array, but if there are, capture them into an array
+    if (oldScores === null) {
+        scoreBoardArray = [];
+    } else {
+        scoreBoardArray = JSON.parse(oldScores);
+    };
 
-//     // validate the initials submitted by the user
-//     feedbackDiv.classList.remove("hide");
-//     if (scoreBoardEntry.playerInitials === "") {
-//         feedbackDiv.style.color = "red";
-//         feedbackDiv.textContent = "Initials cannot be left blank!";
-//     } else {
-//         feedbackDiv.style.color = "green";
-//         feedbackDiv.textContent = "Score recorded succesfully!";
+    // create this game's scoreboard record as an object from player's submission
+    var playerInitials = document.querySelector("#initials")
+    var scoreBoardEntry = {
+        playerInitials: playerInitials.value.trim(),
+        playerScore: timeLeft,
+    };
 
-//         // create this game's scoreboard record as an object from player's submission
-//         var playerInitials = document.querySelector("#initials")
-//         var scoreBoardEntry = {
-//             playerInitials: playerInitials.value.trim(),
-//             playerScore: timeLeft,
-//         };
+    // validate the initials submitted by the user
+    if (scoreBoardEntry.playerInitials === "") {
+        feedbackDiv.style.color = "red";
+        feedbackDiv.textContent = "Initials cannot be left blank!";
+        feedbackDiv.classList.remove("hide");
+    } else {
+        feedbackDiv.style.color = "green";
+        feedbackDiv.textContent = "Score recorded succesfully!";
+        feedbackDiv.classList.remove("hide");
 
-//         // add this game's object to the existing array of objects from previous games
-//         scoreBoardArray.push(scoreBoardEntry);
+        // add this game's scores to the existing array of objects from previous games
+        scoreBoardArray.push(scoreBoardEntry);
 
-//         // write the full record to local storage
-//         localStorage.setItem("scoreBoardString", JSON.stringify(scoreBoardArray));
+        // write the full record to local storage
+        localStorage.setItem("scoreBoardString", JSON.stringify(scoreBoardArray));
 
-//     };
+    };
     
-//     setTimeout(() => {
-//         feedbackDiv.classList.add("hide");
-//     }, 2000);
+    setTimeout(() => {
+        feedbackDiv.classList.add("hide");
+    }, 2000);
     
-// };
+};
 
