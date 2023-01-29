@@ -88,7 +88,7 @@ function displayNextQuestion() {
         }) 
 
     } else {
-    
+        // if user has reached last question, game is over
         gameOver();
 
     };
@@ -118,7 +118,7 @@ function correctnessChecker(event) {
             timeLeft = timeLeft-10;
         } else {
             timeLeft = 0;
-            // Send user to game over screen
+            // Send user to game over screen if time runs out
             gameOver();
         }
     }
