@@ -134,15 +134,42 @@ function correctnessChecker(event) {
 // a function to end the game
 function gameOver() {
 
-    //stops the timer
+    // stop the timer
     clearInterval(timerInterval);
     // remove the questions screen from view
     questionScreen.classList.add("hide");
     // display  game Over screen
     gameOverScreen.classList.remove("hide");
-    var finalscore = querySelector("#final-score");
+    // show user their final score
+    var finalscore = document.querySelector("#final-score");
     finalscore.textContent = timeLeft;
+
     // THEN I can save my initials and score (write to local storage from this logic file)
+    var submitButton = document.querySelector("#submit");
+    submitButton.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        // create scoreboard record as an object from submission
+        var playerInitials = document.querySelector("#initials")
+        var leaderBoardEntry = {
+            playerInitials: playerInitials.value.trim(),
+            playerScore: timeLeft,
+        };
+        
+        feedbackDiv.classList.remove("hide");
+        if (leaderBoardEntry.playerInitials === "") {
+            feedbackDiv.style.color = "red";
+            feedbackDiv.textContent = "Initials cannot be left blank!";
+        } else {
+            feedbackDiv.style.color = "green";
+            feedbackDiv.textContent = "Score recorded succesfully!";
+        };
+        setTimeout(() => {
+            feedbackDiv.classList.add("hide");
+            }, 2000);
+
+    
+    });
 
 };
 
