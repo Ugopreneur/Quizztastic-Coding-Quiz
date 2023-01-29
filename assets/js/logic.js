@@ -175,8 +175,20 @@ function submitInitials(event) {
         feedbackDiv.textContent = "Score recorded succesfully!";
         feedbackDiv.classList.remove("hide");
 
+        var scoreBoardArray;
+
+        // declaring a variable to hold a string of all previous game scores
+        var oldScores = localStorage.getItem("scoreBoardString");
+
+        // if there were no previous scores, create a new array, but if there are, capture them into an array
+        if (oldScores === null) {
+            scoreBoardArray = [];
+        } else {
+            scoreBoardArray = JSON.parse(oldScores);
+        };
+
         // add this game's scores to the existing array of objects from previous games
-        updateScoreBoardArray(scoreBoardEntry);
+        scoreBoardArray.push(scoreBoardEntry);
 
         // write the full record to local storage
         localStorage.setItem("scoreBoardString", JSON.stringify(scoreBoardArray));
