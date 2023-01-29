@@ -157,17 +157,6 @@ function gameOver() {
 // a function to allow users submit their initials and log to scoreboard
 function submitInitials(event) {
     event.preventDefault();
-    var scoreBoardArray;
-
-    // declaring a variable to hold a string of all old game scores
-    var oldScores = localStorage.getItem("scoreBoardString");
-
-    // if there were no old scores, create a new array, but if there are, capture them into an array
-    if (oldScores === null) {
-        scoreBoardArray = [];
-    } else {
-        scoreBoardArray = JSON.parse(oldScores);
-    };
 
     // create this game's scoreboard record as an object from player's submission
     var playerInitials = document.querySelector("#initials")
@@ -187,7 +176,7 @@ function submitInitials(event) {
         feedbackDiv.classList.remove("hide");
 
         // add this game's scores to the existing array of objects from previous games
-        scoreBoardArray.push(scoreBoardEntry);
+        updateScoreBoardArray(scoreBoardEntry);
 
         // write the full record to local storage
         localStorage.setItem("scoreBoardString", JSON.stringify(scoreBoardArray));
@@ -199,4 +188,6 @@ function submitInitials(event) {
     }, 2000);
     
 };
+
+
 
