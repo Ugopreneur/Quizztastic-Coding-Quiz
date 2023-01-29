@@ -20,7 +20,7 @@ function buildScoreboard() {
     if (allScoresArray === null) {
 
         var scoreBoardListItem = document.createElement("ol");
-        scoreBoardListItem.textContent = "There are no scores to display yet. Go play some games!";
+        scoreBoardListItem.textContent = "There are no scores to display. Go play some games!";
         scoreBoard.appendChild(scoreBoardListItem);
 
     } else {
@@ -38,9 +38,8 @@ function buildScoreboard() {
 
 // function thaty clears high scores and displays "There are no scores ..."
 function clearStorage() {
+    scoreBoard.innerHTML = "There are no scores to display. Go play some games!";
     localStorage.clear(scoreBoardString);
-    scoreBoard.innerHTML = "";
-    buildScoreboard();
 }
 
 
