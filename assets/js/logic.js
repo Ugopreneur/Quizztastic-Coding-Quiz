@@ -1,4 +1,5 @@
 // DECLARING VARIABLES & DOM ELEMENTS FOR USE IN THE GLOBAL SCOPE
+// ===========================================================================
 
 // establishing the starting index in the questionsAndAnswers array
 var questionIndex = 0;
@@ -12,6 +13,7 @@ var possibleAnswersDiv = document.getElementById("choices");
 
 
 //MAIN GAME LOGIC STARTS HERE ...
+// ===========================================================================
 
 // WHEN I click the start button, run a function to start the game
 startButton.addEventListener("click", function() {
@@ -37,6 +39,7 @@ startButton.addEventListener("click", function() {
 
 
 // ALL FUNCTIONS DECLARED BELOW:
+// ===========================================================================
 
 // a function to start the game timer
 function startTimer() {
@@ -80,6 +83,8 @@ function displayNextQuestion() {
     });
 }
 
+
+// a function to check if the users answer is correct and move to next question
 function correctnessChecker(event) {
 
     var answerChosen = event.target;
@@ -116,12 +121,8 @@ function correctnessChecker(event) {
 
 }
 
-    
-    // remove current question
-    // THEN I am presented with another question
 
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
+
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
 
@@ -133,5 +134,3 @@ function correctnessChecker(event) {
 // carousel.addEventListener("click", function() {
 //     window.location.href = images[index]; // this shoudl  be a url
 //   });
-
-//Look at the buttons in the css file to get a good idea of how to add things to your page
