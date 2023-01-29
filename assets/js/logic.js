@@ -95,9 +95,9 @@ function correctnessChecker(event) {
         // plays negative chime to indicate user was wrong
         var wrongaudio = new Audio("./assets/sfx/incorrect.wav");
         (function() {wrongaudio.play();})();
+        // deduct 15 seconds off the timer
+        timeLeft = timeLeft-15;
     }
-    // if answer is correct, play correct sound, display "correct!"" at bottom (inside feedback div)
-    // if answer is wrong, play wrong sound, display display "wrong!"" at bottom (inside feedback div), and then deduct 15 seconds from time
     // ensure timer cant go below zero
     // immediately display next question
     questionIndex++;
