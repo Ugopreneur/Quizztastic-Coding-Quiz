@@ -3,10 +3,11 @@
 // establishing the starting index in the questionsAndAnswers array
 var questionIndex = 0;
 // declaring the total time allowed for the game
-var timeLeft = 75;
+var timeLeft = 76;
 var timeEl = document.querySelector("#time");
 var startButton = document.querySelector(".start");
 var feedbackDiv = document.querySelector("#feedback");
+var possibleAnswersDiv = document.getElementById("choices");
 
 
 
@@ -47,8 +48,8 @@ function startTimer() {
       if(timeLeft === 0) {
         // Stops timer at zero
         clearInterval(timerInterval);
-        // Send user to game over screen
-        
+        // Send user to game over screen 
+
       }
   
     }, 1000);
@@ -58,6 +59,8 @@ function startTimer() {
 // a function to display the next question to user
 function displayNextQuestion() {
 
+    // clear out any answer buttons left from previous question
+    possibleAnswersDiv.innerHTML = "";
     // populate view with next question
     var questionOnDisplay = document.querySelector("#question-title");
     questionOnDisplay.textContent = questionsAndAnswers[questionIndex].questionText;
@@ -68,7 +71,6 @@ function displayNextQuestion() {
         var answerButton = document.createElement("button");
         // put a number before the text on each button
         answerButton.textContent = questionsAndAnswers[questionIndex].possibleAnswers.indexOf(i)+1 + ". " + i.answerText;
-        possibleAnswersDiv = document.getElementById("choices");
         possibleAnswersDiv.appendChild(answerButton);
         // add a data attribute of correct or incorrect (true or false) to each button
         answerButton.dataset.correct = i.correct;
@@ -95,10 +97,15 @@ function correctnessChecker(event) {
         // plays negative chime to indicate user was wrong
         var wrongaudio = new Audio("./assets/sfx/incorrect.wav");
         (function() {wrongaudio.play();})();
-        // deduct 15 seconds off the timer
-        timeLeft = timeLeft-15;
+        // deduct 10 seconds off the timer but dont let it go below zero
+        if (timeLeft > 10) {
+            timeLeft = timeLeft-10;
+        } else {
+            timeLeft = 0;
+            // Send user to game over screen
+
+        }
     }
-    // ensure timer cant go below zero
     // immediately display next question
     questionIndex++;
     displayNextQuestion();
