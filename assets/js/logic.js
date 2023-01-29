@@ -109,6 +109,10 @@ function correctnessChecker(event) {
     // immediately display next question
     questionIndex++;
     displayNextQuestion();
+    // remove the "Correct!" or "Wrong!" notification at the bottom of the page after 2 seconds
+    setTimeout(() => {
+        feedbackDiv.classList.add("hide");
+        }, 2000);
 
 }
 
