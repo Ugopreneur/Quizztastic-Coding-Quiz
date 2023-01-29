@@ -29,29 +29,6 @@ startButton.addEventListener("click", function() {
     
 });
 
-    // WHEN I answer a question
-    // display right or wrong at bottom
-    // sound plays if right or wrong
-    // remove current question
-    // THEN I am presented with another question
-
-
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-
-// WHEN the game is over
-// THEN I can save my initials and score (write to local storage from this logic file)
-
-// Clicking on image opens a new window containing the image
-// adapt this for viewing high scores page
-// carousel.addEventListener("click", function() {
-//     window.location.href = images[index]; // this shoudl  be a url
-//   });
-
-//Look at the buttons in the css file to get a good idea of how to add things to your page
-
 
 
 
@@ -75,7 +52,39 @@ function displayNextQuestion() {
         // add a data attribute of correct or incorrect (true or false) to each button
         answerButton.dataset.correct = i.correct;
         // attaching an event listener for when the user clicks an answer
-        // answerButton.addEventListener("click", )
+        answerButton.addEventListener("click", correctnessChecker);
     
     });
 }
+
+function correctnessChecker() {
+
+    // check if answer is right or wrong 
+    // if answer is correct, play correct sound, display "correct!"" at bottom (inside feedback div)
+    // if answer is wrong, play wrong sound, display display "wrong!"" at bottom (inside feedback div), and then deduct 15 seconds from time
+    // ensure timer cant go below zero
+    // immediately display next question
+    questionIndex++;
+    displayNextQuestion();
+
+}
+
+    
+    // remove current question
+    // THEN I am presented with another question
+
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+
+// WHEN the game is over
+// THEN I can save my initials and score (write to local storage from this logic file)
+
+// Clicking on image opens a new window containing the image
+// adapt this for viewing high scores page
+// carousel.addEventListener("click", function() {
+//     window.location.href = images[index]; // this shoudl  be a url
+//   });
+
+//Look at the buttons in the css file to get a good idea of how to add things to your page
