@@ -193,6 +193,10 @@ function submitInitials(event) {
         // write the full record to local storage
         localStorage.setItem("scoreBoardString", JSON.stringify(scoreBoardArray));
 
+        // disable the submit button so the same initials cannot be submitted more than once
+        submitButton.disabled = true;
+        submitButton.style.color = "grey";
+
     };
     
     setTimeout(() => {
