@@ -31,7 +31,7 @@ var questionsAndAnswers = [
     {
         questionText: "Javascript langauge is mainly used to ...",
         possibleAnswers: [
-            {answerText: "Define the content and structure of web pages", correct: true},
+            {answerText: "Define the content and structure of web pages", correct: false},
             {answerText: "Specify the design and layout of web pages", correct: false},
             {answerText: "Program the behaviour and interactivity of web pages", correct: true},
             {answerText: "Load and display web pages to the user", correct: false},
@@ -42,7 +42,7 @@ var questionsAndAnswers = [
         possibleAnswers: [
             {answerText: "A variable declared in global scope can't be called in a function", correct: true},
             {answerText: "The querySelector method can be ued to get elements by ID", correct: false},
-            {answerText: "Javascript can be used to manipulate appearance of HTML elements", correct: false},
+            {answerText: "Javascript can be used to manipulate HTML elements", correct: false},
             {answerText: "Event listeners can be used to listen for keyboard presses", correct: false},
         ]
     },

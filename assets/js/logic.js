@@ -5,10 +5,14 @@
 var questionIndex = 0;
 // declaring the total time allowed for the game
 var timeLeft = 76;
+// declaring game timer variable so it can be stopped by multiple funtions
+var timerInterval;
 var timeEl = document.querySelector("#time");
 var startButton = document.querySelector(".start");
 var feedbackDiv = document.querySelector("#feedback");
 var possibleAnswersDiv = document.getElementById("choices");
+var questionScreen = document.querySelector("#questions");
+var gameOverScreen = document.querySelector("#end-screen");
 
 
 
@@ -22,7 +26,6 @@ startButton.addEventListener("click", function() {
     var startScreen = document.querySelector("#start-screen");
     startScreen.classList.add("hide");
     // allow questions to show in view
-    var questionScreen = document.querySelector("#questions");
     questionScreen.classList.remove("hide");
     // Run a function to start the game timer
     startTimer();
@@ -44,7 +47,7 @@ startButton.addEventListener("click", function() {
 // a function to start the game timer
 function startTimer() {
     // Sets interval in variable
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
       timeLeft--;
       timeEl.textContent = timeLeft;
   
@@ -131,9 +134,14 @@ function correctnessChecker(event) {
 // a function to end the game
 function gameOver() {
 
-    // WHEN all questions are answered or the timer reaches 0
-    // THEN the game is over
-    // WHEN the game is over
+    //stops the timer
+    clearInterval(timerInterval);
+    // remove the questions screen from view
+    questionScreen.classList.add("hide");
+    // display  game Over screen
+    gameOverScreen.classList.remove("hide");
+    var finalscore = querySelector("#final-score");
+    finalscore.textContent = timeLeft;
     // THEN I can save my initials and score (write to local storage from this logic file)
 
 };
