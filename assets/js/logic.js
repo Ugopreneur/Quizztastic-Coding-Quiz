@@ -6,6 +6,7 @@ var questionIndex = 0;
 var timeLeft = 75;
 var timeEl = document.querySelector("#time");
 var startButton = document.querySelector(".start");
+var feedbackDiv = document.querySelector("#feedback");
 
 
 
@@ -80,11 +81,20 @@ function displayNextQuestion() {
 function correctnessChecker(event) {
 
     var answerChosen = event.target;
+    feedbackDiv.classList.remove("hide");
     // if statements to check whether answer is correct or wrong
     if (answerChosen.dataset.correct === "true") {
-        console.log("Answer is correct! Your code works");
+        // displays text "Correct! at the bottom of page if user selects the right answer"
+        feedbackDiv.textContent = "Correct!"
+        // plays positive chime to indicate user was right
+        var correctaudio = new Audio("./assets/sfx/correct.wav");
+        (function() {correctaudio.play();})();
     } else {
-        console.log("Something's not working right");
+        // displays text "Wrong! at the bottom of page if user selects the wrong answer"
+        feedbackDiv.textContent = "Wrong!"
+        // plays negative chime to indicate user was wrong
+        var wrongaudio = new Audio("./assets/sfx/incorrect.wav");
+        (function() {wrongaudio.play();})();
     }
     // if answer is correct, play correct sound, display "correct!"" at bottom (inside feedback div)
     // if answer is wrong, play wrong sound, display display "wrong!"" at bottom (inside feedback div), and then deduct 15 seconds from time
