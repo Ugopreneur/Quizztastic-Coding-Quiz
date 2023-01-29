@@ -52,35 +52,43 @@ function startTimer() {
         // Stops timer at zero
         clearInterval(timerInterval);
         // Send user to game over screen 
-
+        gameOver();
       }
     }, 1000);
-  }
+}
 
 
 // a function to display the next question to user
 function displayNextQuestion() {
 
-    // clear out any answer buttons left from previous question
-    possibleAnswersDiv.innerHTML = "";
-    // populate view with next question
-    var questionOnDisplay = document.querySelector("#question-title");
-    questionOnDisplay.textContent = questionsAndAnswers[questionIndex].questionText;
-    // populate the answer buttons with the answers associated with that question
-    questionsAndAnswers[questionIndex].possibleAnswers.forEach((i) => {
-        
-        console.log(i); // logs in console just to check that my forEach loop works as intended
-        var answerButton = document.createElement("button");
-        // put a number before the text on each button
-        answerButton.textContent = questionsAndAnswers[questionIndex].possibleAnswers.indexOf(i)+1 + ". " + i.answerText;
-        possibleAnswersDiv.appendChild(answerButton);
-        // add a data attribute of correct or incorrect (true or false) to each button
-        answerButton.dataset.correct = i.correct;
-        // attaching an event listener for when the user clicks an answer
-        answerButton.addEventListener("click", correctnessChecker);
+    if (questionIndex < questionsAndAnswers.length) {
+
+        // clear out any answer buttons left from previous question
+        possibleAnswersDiv.innerHTML = "";
+        // populate view with next question
+        var questionOnDisplay = document.querySelector("#question-title");
+        questionOnDisplay.textContent = questionsAndAnswers[questionIndex].questionText;
+        // populate the answer buttons with the answers associated with that question
+        questionsAndAnswers[questionIndex].possibleAnswers.forEach((i) => {
+            
+            console.log(i); // logs in console just to check that my forEach loop works as intended
+            var answerButton = document.createElement("button");
+            // put a number before the text on each button
+            answerButton.textContent = questionsAndAnswers[questionIndex].possibleAnswers.indexOf(i)+1 + ". " + i.answerText;
+            possibleAnswersDiv.appendChild(answerButton);
+            // add a data attribute of correct or incorrect (true or false) to each button
+            answerButton.dataset.correct = i.correct;
+            // attaching an event listener for when the user clicks an answer
+            answerButton.addEventListener("click", correctnessChecker);
+
+        }) 
+
+    } else {
     
-    });
-}
+        gameOver();
+
+    };
+};
 
 
 // a function to check if the users answer is correct and move to next question
@@ -107,7 +115,7 @@ function correctnessChecker(event) {
         } else {
             timeLeft = 0;
             // Send user to game over screen
-
+            gameOver();
         }
     }
     // immediately display next question
@@ -117,15 +125,22 @@ function correctnessChecker(event) {
     setTimeout(() => {
         feedbackDiv.classList.add("hide");
         }, 2000);
-}
+};
+
+
+// a function to end the game
+function gameOver() {
+
+    // WHEN all questions are answered or the timer reaches 0
+    // THEN the game is over
+    // WHEN the game is over
+    // THEN I can save my initials and score (write to local storage from this logic file)
+
+};
 
 
 
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
 
-// WHEN the game is over
-// THEN I can save my initials and score (write to local storage from this logic file)
 
 // Clicking on image opens a new window containing the image
 // adapt this for viewing high scores page
